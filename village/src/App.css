@@ -1,11 +1,22 @@
 .App {
   text-align: center;
-  background-color: blue;
+  
 }
 
 .nav-container {
-  background-color: aqua;
+  background-color: blue;
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 50px;
+  justify-content: space-between;
+  padding: 0 850px;
+}
+
+.nav {
+  text-decoration: none;
+  color: white;
+  font-weight: bolder;
+  font-size: 20px;
+  
 }

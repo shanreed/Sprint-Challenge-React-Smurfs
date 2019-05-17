@@ -27,8 +27,8 @@ class App extends Component {
     return (
       <div className = "App">
         <div className = 'nav-container'>
-        <NavLink to='/'>Home</NavLink>
-        <NavLink to='/smurf-form'>New Smurf</NavLink>
+        <NavLink className = 'nav' to='/'>Home</NavLink>
+        <NavLink className = 'nav' to='/smurf-form'>New Smurf</NavLink>
         </div>
         <Route exact path='/' render = {(props)=> <Smurfs {...props} smurfs={this.state.smurfs}/>}></Route>
         <Route exact path='/smurf-form' render = {(props)=> <SmurfForm {...props} handleInputChange = {this.handleInputChange}/> }></Route>                         
