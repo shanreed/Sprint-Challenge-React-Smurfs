@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {Route, NavLink} from 'react-router-dom';
 
 import './App.css';
 import SmurfForm from './components/SmurfForm';
@@ -24,10 +25,13 @@ class App extends Component {
   // You'll need to make sure you have the right properties on state and pass them down to props.
   render() {
     return (
-      <div className="App">
-        
-        <SmurfForm />
-        <Smurfs smurfs={this.state.smurfs} />
+      <div className = "App">
+        <div className = 'nav-container'>
+        <NavLink to='/'>Home</NavLink>
+        <NavLink to='/smurf-form'>New Smurf</NavLink>
+        </div>
+        <Route exact path='/' render = {(props)=> <Smurfs {...props} smurfs={this.state.smurfs}/>}></Route>
+        <Route exact path='/smurf-form' render = {(props)=> <SmurfForm {...props} handleInputChange = {this.handleInputChange}/> }></Route>                         
       </div>
     );
   }
