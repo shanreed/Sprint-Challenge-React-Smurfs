@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import axios from "axios";
 import './SmurfForm.css';
 
 class SmurfForm extends Component {
@@ -18,15 +18,21 @@ class SmurfForm extends Component {
     let newSmurf = {
       name: this.state.name,
       age: this.state.age,
-      height: this.state.height     
-     }
-    axios.post('http://localhost:3333/smurfs', newSmurf)
-          this.setState({
-            name: '',
-            age: '',
-            height: ''
-          });
-        }
+      height: this.state.height,
+    }
+    axios
+    .post("http://localhost:3333/smurfs", newSmurf)
+    .then(response => {
+      this.props.addSmurfs(response.data)
+      this.props.history.push('/'); 
+    })
+    .catch(error => console.log(error));
+    this.setState({
+      name: '',
+      age: '',
+      height: ''
+    });
+  }
 
   handleInputChange = e => {
     this.setState({ [e.target.name]: e.target.value });
@@ -42,20 +48,24 @@ class SmurfForm extends Component {
             placeholder="name"
             value={this.state.name}
             name="name"
+            required
           />
           <input
             onChange={this.handleInputChange}
             placeholder="age"
             value={this.state.age}
             name="age"
+            type='number'
+            required
           />
           <input
             onChange={this.handleInputChange}
             placeholder="height"
             value={this.state.height}
             name="height"
+            required
           />
-          <button type="submit">Add to the village</button>
+          <button onClick={this.addSmurf} type="submit">Add to the village</button>
         </form>
       </div>
     );
